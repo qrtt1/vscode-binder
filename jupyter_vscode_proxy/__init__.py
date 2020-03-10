@@ -21,13 +21,11 @@ def setup_vscode():
             "none",
             "--disable-telemetry",
             "--port=" + str(port),
+            "--extra-builtin-extensions-dir", "/opt/vscode",
         ]
 
-        if extensions_dir:
-            cmd += ["--extensions-dir", extensions_dir]
-
-        if extra_extensions_dir:
-            cmd += ["--extra-extensions-dir", extra_extensions_dir]
+        cmd += ["--user-data-dir", "/home/jovyan/.primehub-vscode"]
+        cmd += ["--extensions-dir", "/home/jovyan/.primehub-vscode"]   
 
         cmd.append(working_dir)
         return cmd
